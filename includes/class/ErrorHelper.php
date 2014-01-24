@@ -55,9 +55,14 @@ public class ErrorHelper extends SQLHelper{
           Return Value : none
         */
 
-	public function writeToLog($log, $e_message = "", $e_code = 0, $access_type = 0){
-		$IO->scanLogHealth($log);	
-		
+	public function writeToLog($log, $e_level, $e_message = "", $e_code = 0, $access_type = 0){
+		GLOBAL $DATETIME;
+		$logFile = $IO->scanLogHealth($log);	
+		$fileHandler = fopen($logFile,'a');
+		$e_message = $e_message."\n";
+		fwrite($fileHandler, $DATETIME);
+		fwrite($fileHandler,$e_message);
+		$this->pushError($e_message, $e_level, NULL, 0, NULL);
 	}
 	
 }

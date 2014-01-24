@@ -26,6 +26,7 @@ $BACKUP_PATH = $dir."/backup";
 $date = new DateTime();
 $TIMESTAMP  = $date->getTimestamp();
 $DATE = date('y-m-d');
-
+$TIME = date("h:i:s");
+$DATETIME = date('y-m-d h:i:s');
 
 ?>
